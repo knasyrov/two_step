@@ -1,0 +1,8 @@
+.row
+  .col-md-1
+    - if @user.avatar_stored?
+      = image_tag @user.avatar.thumb('60x60').url, class: 'img-circle'
+  .col-md-5
+    %span.name= @user.full_name
+    %br
+    %span.gender= @user.gender

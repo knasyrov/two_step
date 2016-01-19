@@ -1,0 +1,26 @@
+%h4 Шаг 1: Основные данные
+
+= form_for @user, html: {role: :form} do |f|
+  - if @user.errors.any?
+    .alert.alert-danger(role=alert)
+      %button.close{type: 'button', data: {dismiss: 'alert'}} ×
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg  
+  
+  .form-group.form-group-sm
+    = f.label :first_name, 'Имя'
+    = f.text_field :first_name, class: 'form-control'
+  .form-group.form-group-sm
+    = f.label :last_name, 'Фамилия'
+    = f.text_field :last_name, class: 'form-control'
+  .form-group.form-group-sm
+    %label.radio-inline
+      = f.radio_button :sex, User::MALE
+      Мужчина
+    %label.radio-inline
+      = f.radio_button :sex, User::FEMALE
+      Женщина
+  
+  .form-group.form-group-sm
+    = f.submit 'Продолжить', class: 'btn btn-primary btn-sm'

@@ -1,0 +1,9 @@
+%h4 Шаг 2: Выбор аватарки
+
+= form_for @user, html: {role: :form, class: 'dropzone', style: 'border: 1px solid black; min-height: 200px; width: 200px;', id: 'avatarForm'} do |f|
+  - if @user.errors.any?
+    .alert.alert-danger(role=alert)
+      %button.close{type: 'button', data: {dismiss: 'alert'}} ×
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg  
